@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zookeeper
+  namespace: ns-infra
+spec:
+  selector:
+    matchLabels:
+      app: zookeeper
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: zookeeper
+    spec:
+      containers:
+        - image: confluentinc/cp-zookeeper:latest
+          name: zookeeper
+          envFrom:
+            - configMapRef:
+                name: zookeeper-configmap
+          ports:
+            - containerPort: 2181
+              name: zookeeper
+          volumeMounts:
+            - name: zookeeper-persistent-storage
+              mountPath: /var/lib/zookeeper
+      volumes:
+        - name: zookeeper-persistent-storage
+          persistentVolumeClaim:
+            claimName: zookeeper-pv-claim
