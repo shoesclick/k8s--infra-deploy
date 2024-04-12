@@ -1,5 +1,5 @@
 @Library('jenkinspipelineinfralib') _
 
 deliveryPipeline {
-    package_manager = 'maven'
+    package_manager = 'infra'
 }
