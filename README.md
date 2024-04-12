@@ -2,6 +2,6 @@
 
 Artefatos K8S para utilizaçaõ da stack no kubernetes
 
-* **myswl**
+* **mysql**
 * **redis**
 * **kafka**
