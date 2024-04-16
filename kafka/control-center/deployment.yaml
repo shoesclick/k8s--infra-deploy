@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: control-center
+  namespace: ns-infra
+spec:
+  selector:
+    matchLabels:
+      app: control-center
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: control-center
+    spec:
+      containers:
+        - image: confluentinc/cp-kafka:latest
+          name: control-center
+          envFrom:
+            - configMapRef:
+                name: control-center-configmap
+          ports:
+            - containerPort: 9021
+          volumeMounts:
+            - name: control-center-persistent-storage
+              mountPath: /var/lib/control-center
+      volumes:
+        - name: control-center-persistent-storage
+          persistentVolumeClaim:
+            claimName: control-center-pv-claim

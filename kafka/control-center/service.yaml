@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: control-center
+  namespace: ns-infra
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 9021
+      name: mq-9021
+  selector:
+    app: control-center
