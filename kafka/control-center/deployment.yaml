@@ -15,17 +15,10 @@ spec:
         app: control-center
     spec:
       containers:
-        - image: confluentinc/cp-kafka:latest
+        - image: confluentinc/cp-enterprise-control-center:latest
           name: control-center
           envFrom:
             - configMapRef:
                 name: control-center-configmap
           ports:
             - containerPort: 9021
-          volumeMounts:
-            - name: control-center-persistent-storage
-              mountPath: /var/lib/control-center
-      volumes:
-        - name: control-center-persistent-storage
-          persistentVolumeClaim:
-            claimName: control-center-pv-claim

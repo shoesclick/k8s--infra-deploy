@@ -1,32 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: schema-registry
+  name: schma-regstry
   namespace: ns-infra
 spec:
   selector:
     matchLabels:
-      app: schema-registry
+      app: schma-regstry
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: schema-registry
+        app: schma-regstry
     spec:
       containers:
         - image: confluentinc/cp-schema-registry:latest
-          name: schema-registry
+          name: schma-regstry
           envFrom:
             - configMapRef:
-                name: schema-registry-configmap
+                name: schma-regstry-configmap
           ports:
             - containerPort: 8081
-              name: schema-registry
           volumeMounts:
-            - name: schema-registry-persistent-storage
+            - name: schma-regstry-persistent-storage
               mountPath: /var/lib/schema-registry
       volumes:
-        - name: schema-registry-persistent-storage
+        - name: schma-regstry-persistent-storage
           persistentVolumeClaim:
-            claimName: schema-registry-pv-claim
+            claimName: schma-regstry-pv-claim

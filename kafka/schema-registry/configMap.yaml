@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-    name: schema-registry-configmap
+    name: schma-regstry-configmap
     namespace: ns-infra
 data:
-    SCHEMA_REGISTRY_HOST_NAME: "schema-registry.ns-infra.svc.cluster.local"
-    SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: "zookeeper.ns-infra.svc.cluster.local:2181"
-    SCHEMA_REGISTRY_LISTENERS: "http://schema-registry.ns-infra.svc.cluster.local:8081"
-    SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: "PLAINTEXT://kafka-broker.ns-infra.svc.cluster.local:29092"
+    SCHEMA_REGISTRY_HOST_NAME: "schma-regstry"
+    SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: "zookeeper:2181"
+    SCHEMA_REGISTRY_LISTENERS: "http://0.0.0.0:8081"
+    SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: "PLAINTEXT://kafka-broker:29092"
     SCHEMA_REGISTRY_DEBUG: "true"
