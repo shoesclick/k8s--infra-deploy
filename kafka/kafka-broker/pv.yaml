@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: kafka-broker-pv-volume
+  name: kfk-brkr-pv-volume
   namespace: ns-infra
   labels:
     type: local
@@ -17,7 +17,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: kafka-broker-pv-claim
+  name: kfk-brkr-pv-claim
   namespace: ns-infra
 spec:
   storageClassName: manual

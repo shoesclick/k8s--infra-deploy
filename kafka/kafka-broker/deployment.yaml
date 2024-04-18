@@ -1,34 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kafka-broker
+  name: kfk-brkr
   namespace: ns-infra
 spec:
   selector:
     matchLabels:
-      app: kafka-broker
+      app: kfk-brkr
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: kafka-broker
+        app: kfk-brkr
     spec:
       containers:
         - image: confluentinc/cp-kafka:latest
-          name: kafka-broker
+          name: kfk-brkr
           envFrom:
             - configMapRef:
-                name: kafka-broker-configmap
+                name: kfk-brkr-configmap
           ports:
             - containerPort: 9092
-              name: kafka-broker
+              name: kfk-brkr
             - containerPort: 29092
-              name: kafka-plain
+              name: kfk-plain
           volumeMounts:
-            - name: kafka-broker-persistent-storage
+            - name: kfk-brkr-persistent-storage
               mountPath: /var/lib/kafka-broker
       volumes:
-        - name: kafka-broker-persistent-storage
+        - name: kfk-brkr-persistent-storage
           persistentVolumeClaim:
-            claimName: kafka-broker-pv-claim
+            claimName: kfk-brkr-pv-claim
