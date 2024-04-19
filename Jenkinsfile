@@ -7,7 +7,8 @@ deliveryPipeline {
                'Redis':'redis',
                'Zookeeper':'kafka/kafka-broker',
                'Kafka Broker':'kafka/kafka-broker',
-               'Schema Registry': 'kafka/schema-registry'
+               'Schema Registry': 'kafka/schema-registry',
+               'Control UI': 'kafka/control-center'
                ]
 
 }
